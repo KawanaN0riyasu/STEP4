@@ -43,7 +43,7 @@ drink = {
 @app.post("/search_product/")
 def search_product(product_query: ProductQuery = Body(...)):
     print(f"Received code: {product_query.code}")
-    if product_query.code == drink["PRD_CD"]:
+    if product_query.code == drink["PRD_ID"]:
         return {
             "status": "success",
             "message": drink

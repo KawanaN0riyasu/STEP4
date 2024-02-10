@@ -11,8 +11,8 @@ import { IDtype } from './type';
 // };
 
 export default function Home() {
-  const [productid, setProductid] = useState<IDtype | null>(null);
-  const message = "welcome"
+  const [productid, setProductid] = useState< IDtype | null >(null);  //型が IDtype か null で、初期値がnull。
+  const message = "welcome";
 
   const handleProductChange = (newProductId: string) => {
     const newProduct: IDtype  = {
@@ -20,7 +20,7 @@ export default function Home() {
     };
     setProductid(newProduct);
   };
-  
+  // newProductId を受け取って新しい IDtype オブジェクト「newProduct」 を作成、setProductid を使って productid を更新する。
 
   return (
     <>

@@ -2,6 +2,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+// アプリ内では「Inter」フォントを使用
 
 export const metadata = {
   title: "Create Next App",
@@ -14,8 +15,10 @@ interface RootLayoutProps {
 
 export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang="en"> 
       <body className={inter.className}>{children}</body>
     </html>
   );
 }
+// <html>タグ: 言語属性を「en」（英語）に設定
+// <body>タグ: Google Fonts Interフォントがページ全体に適用

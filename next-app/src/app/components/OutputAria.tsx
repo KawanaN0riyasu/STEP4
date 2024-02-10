@@ -16,9 +16,11 @@ const OutputAria: React.FC<OutputAriaProps> = ({ productid }) => {
     const [data, setData] = useState<Response | null>(null);
 
     useEffect(() => {
+        // データを取得する非同期関数
         const fetchData = async () => {
             if (productid) {
                 try {
+                    // サーバーから製品情報を取得するリクエストを送信
                     const response = await fetch('http://127.0.0.1:8000/search_product/', {
                         method: 'POST',
                         headers: {
@@ -26,16 +28,19 @@ const OutputAria: React.FC<OutputAriaProps> = ({ productid }) => {
                         },
                         body: JSON.stringify({ code: productid.PRD_ID }),
                     });
+                    // レスポンスをJSON形式で解析し、dataステートにセット
                     const result = await response.json();
                     setData({ status: response.status, ...result });
                 } catch (error) {
                     console.error('Fetching data failed', error);
-                    setData({ status: 500 }); // 例外が発生した場合は、500とみなす
+                    // エラーが発生した場合は、ステータスコード500としてセット
+                    setData({ status: 500 }); 
                 }
             }
         };
-        
+        // コンポーネントがマウントされた際にデータを取得する
         fetchData();
+    // productid が変更されるたびに fetchData を実行する
     }, [productid]);
 
 
